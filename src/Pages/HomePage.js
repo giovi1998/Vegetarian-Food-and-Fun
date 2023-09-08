@@ -4,10 +4,6 @@ import Banner from "../Component/Banner";
 import {Link} from "react-router-dom";
 import TopMeals from "../Component/TopMeals"
 import MealList from "../Component/MealList"
-import { BrowserRouter as Route, Routes } from 'react-router-dom';
-import RecipeList from '../Component/RecipeList';
-import RecipeDetails from '../Component/RecipeDetails'; // Create this component
-
 
 const HomePage = () => {
   return (
@@ -21,11 +17,6 @@ const HomePage = () => {
         </Banner>
       </Hero>
       <TopMeals />
-        <h1>Recipe List</h1>
-          <Routes>
-            <Route exact path="/" component={RecipeList} />
-            <Route path="/recipe/:id" component={RecipeDetails} />
-          </Routes>
       <MealList />
     </div>
   )
