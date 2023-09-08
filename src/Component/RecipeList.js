@@ -1,24 +1,16 @@
 // RecipeList.js
 import React, { useEffect, useState } from 'react';
-import { fetchRecipes, fetchRecipeById } from '../api';
-import RecipeCard from './RecipeCard';
+import { fetchRecipes, fetchRecipeById } from '../api'; // Import your API functions
+import Loading from './Loading'; // You may need to create this component
+import '../styles/RecipeList.css'; // Add your styles
 
-const RecipeList = () => {
+function RecipeList() {
   const [recipes, setRecipes] = useState([]);
 
   useEffect(() => {
     const getRecipes = async () => {
       const data = await fetchRecipes();
-
-      // Fetch additional details for each recipe and replace the summary
-      const recipesWithDetails = await Promise.all(
-        data.map(async (recipe) => {
-          const details = await fetchRecipeById(recipe.id);
-          return details;
-        })
-      );
-
-      setRecipes(recipesWithDetails);
+      setRecipes(data);
     };
 
     getRecipes();
@@ -26,17 +18,23 @@ const RecipeList = () => {
 
   return (
     <div className="recipe-list">
-      {recipes.map((recipe, index) => (
-        <RecipeCard
-          key={index}
-          title={recipe.title}
-          image={recipe.image}
-          ingredients={recipe.extendedIngredients}
-          id={recipe.id}
-        />
-      ))}
+      {recipes.length > 0 ? (
+        recipes.map((recipe, index) => (
+          <article className="meal" key={index}>
+            <div className="featured-meals-center">
+              <div className="img-container">
+                <img src={recipe.image} alt="Meal" />
+                {/* You can add a link to the recipe details page here */}
+                <p className="meal-info">{recipe.title}</p>
+              </div>
+            </div>
+          </article>
+        ))
+      ) : (
+        <Loading />
+      )}
     </div>
   );
-};
+}
 
 export default RecipeList;
