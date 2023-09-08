@@ -4,6 +4,7 @@ import Banner from "../Component/Banner";
 import {Link} from "react-router-dom";
 import TopMeals from "../Component/TopMeals"
 import MealList from "../Component/MealList"
+import RecipeList from "../Component/RecipeList"
 
 
 const HomePage = () => {
@@ -18,6 +19,8 @@ const HomePage = () => {
         </Banner>
       </Hero>
       <TopMeals />
+          <h1>Recipe List</h1>
+      <RecipeList />
       <MealList />
     </div>
   )
