@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
-import { fetchRecipeById } from './api'; // Implement this function to fetch recipe details
+import { fetchRecipeById } from '../api'; // Implement this function to fetch recipe details
 
 const RecipeDetails = () => {
   const { id } = useParams();
