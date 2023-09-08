@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
-import { fetchRecipes } from '../api';
+import { fetchRecipeById  } from '../api';
 import Loading from './Loading';
 
 function RecipeList() {
@@ -8,7 +8,7 @@ function RecipeList() {
 
   useEffect(() => {
     const getRecipes = async () => {
-      const data = await fetchRecipes();
+      const data = await fetchRecipeById ();
       setRecipes(data);
     };
 
