@@ -1,8 +1,7 @@
-// RecipeList.js
 import React, { useEffect, useState } from 'react';
-import { fetchRecipes, fetchRecipeById } from '../api'; // Import your API functions
-import Loading from './Loading'; // You may need to create this component
-import '../styles/RecipeList.css'; // Add your styles
+import { Link } from 'react-router-dom'; // Import Link
+import { fetchRecipes } from './api';
+import Loading from './Loading';
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -23,9 +22,11 @@ function RecipeList() {
           <article className="meal" key={index}>
             <div className="featured-meals-center">
               <div className="img-container">
-                <img src={recipe.image} alt="Meal" />
-                {/* You can add a link to the recipe details page here */}
-                <p className="meal-info">{recipe.title}</p>
+                {/* Use Link to navigate to the recipe details page */}
+                <Link to={`/recipe/${recipe.id}`}>
+                  <img src={recipe.image} alt="Meal" />
+                  <p className="meal-info">{recipe.title}</p>
+                </Link>
               </div>
             </div>
           </article>
