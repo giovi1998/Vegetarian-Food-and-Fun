@@ -6,7 +6,7 @@ const RecipeList = () => {
 
   useEffect(() => {
     // Fetch recipes from Spoonacular API using your API key
-    const apiKey = 'YOUR_SPOONACULAR_API_KEY';
+    const apiKey = '1eb2683e66424534ad3a3624227fd050&';
     fetch(
       `https://api.spoonacular.com/recipes/random?number=10&apiKey=${apiKey}`
     )
