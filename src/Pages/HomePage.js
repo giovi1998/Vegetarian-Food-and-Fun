@@ -4,7 +4,9 @@ import Banner from "../Component/Banner";
 import {Link} from "react-router-dom";
 import TopMeals from "../Component/TopMeals"
 import MealList from "../Component/MealList"
-import RecipeList from "../Component/RecipeList"
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import RecipeList from './RecipeList';
+import RecipeDetails from './RecipeDetails'; // Create this component
 
 
 const HomePage = () => {
@@ -19,8 +21,11 @@ const HomePage = () => {
         </Banner>
       </Hero>
       <TopMeals />
-          <h1>Recipe List</h1>
-      <RecipeList />
+        <h1>Recipe List</h1>
+        <Switch>
+          <Route exact path="/" component={RecipeList} />
+          <Route path="/recipe/:id" component={RecipeDetails} />
+        </Switch>
       <MealList />
     </div>
   )
