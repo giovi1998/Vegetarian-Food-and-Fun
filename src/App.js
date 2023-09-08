@@ -11,9 +11,6 @@ function App() {
         <Navbar />
         <Routes>
           <Route exact path="/" element={<HomePage />} />
-          <h1>Recipe List</h1>
-            <Route exact path="/" component={RecipeList} />
-            <Route path="/recipe/:id" component={RecipeDetails} />
           <Route path="/*" element={<ErrorPage />} />          
         </Routes>
     </Router>
