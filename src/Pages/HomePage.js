@@ -4,6 +4,8 @@ import Banner from "../Component/Banner";
 import {Link} from "react-router-dom";
 import TopMeals from "../Component/TopMeals"
 import MealList from "../Component/MealList"
+import RecipeList from "../Component/RecipeList"
+import RecipeDetails from "../Component/RecipeDetails"
 import { BrowserRouter as Router,Route, Routes } from 'react-router-dom';
 
 
