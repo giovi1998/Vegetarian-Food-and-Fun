@@ -1,0 +1,11 @@
+.defaultHero,
+.roomsHero {
+  min-height: calc(100vh - 66px);
+  display: flex;
+  background: url("../images/organic-fruits-vegetables-rainbow-colors-panoramic-food-background.jpg") center/cover no-repeat;
+  align-items: center;
+  justify-content: center;
+}
+.roomsHero {
+  min-height: 60vh;
+}
