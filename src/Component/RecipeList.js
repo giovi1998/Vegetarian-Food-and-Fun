@@ -1,6 +1,6 @@
 // RecipeList.js
 import React, { useEffect, useState } from 'react';
-import { fetchRecipes, fetchRecipeById } from './api';
+import { fetchRecipes, fetchRecipeById } from '../api';
 import RecipeCard from './RecipeCard';
 
 const RecipeList = () => {
