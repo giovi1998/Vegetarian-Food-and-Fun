@@ -1,7 +1,7 @@
 // api.js
 import axios from 'axios';
 
-const API_KEY = 'YOUR_SPOONACULAR_API_KEY';
+const API_KEY = '1eb2683e66424534ad3a3624227fd050';
 
 // Function to fetch recipe details by ID
 export const fetchRecipeById = async (recipeId) => {
