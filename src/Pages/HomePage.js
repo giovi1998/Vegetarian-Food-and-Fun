@@ -18,6 +18,9 @@ const HomePage = () => {
       </Hero>
       <TopMeals />
       <MealList />
+      <h1>Recipe List</h1>
+      <Route exact path="/" component={RecipeList} />
+      <Route path="/recipe/:id" component={RecipeDetails} />
     </div>
   )
 }
