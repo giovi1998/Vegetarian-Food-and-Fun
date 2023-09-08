@@ -22,10 +22,12 @@ const HomePage = () => {
       </Hero>
       <TopMeals />
         <h1>Recipe List</h1>
-        <Routes>
-          <Route exact path="/" component={RecipeList} />
-          <Route path="/recipe/:id" component={RecipeDetails} />
-        </Routes>
+        <Router>
+          <Routes>
+            <Route exact path="/" component={RecipeList} />
+            <Route path="/recipe/:id" component={RecipeDetails} />
+          </Routes>
+        </Router>
       <MealList />
     </div>
   )
