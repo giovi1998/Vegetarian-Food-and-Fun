@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom'; // Import Link
-import { fetchRecipeById  } from '../api';
+import { fetchRecipeById } from '../api';
 import Loading from './Loading';
 
 function RecipeList() {
@@ -8,7 +8,7 @@ function RecipeList() {
 
   useEffect(() => {
     const getRecipes = async () => {
-      const data = await fetchRecipeById ();
+      const data = await fetchRecipeById();
       setRecipes(data);
     };
 
@@ -17,20 +17,24 @@ function RecipeList() {
 
   return (
     <div className="recipe-list">
-      {recipes.length > 0 ? (
-        recipes.map((recipe, index) => (
-          <article className="meal" key={index}>
-            <div className="featured-meals-center">
-              <div className="img-container">
-                {/* Use Link to navigate to the recipe details page */}
-                <Link to={`/recipe/${recipe.id}`}>
-                  <img src={recipe.image} alt="Meal" />
-                  <p className="meal-info">{recipe.title}</p>
-                </Link>
+      {recipes ? (
+        recipes.length > 0 ? (
+          recipes.map((recipe, index) => (
+            <article className="meal" key={index}>
+              <div className="featured-meals-center">
+                <div className="img-container">
+                  {/* Use Link to navigate to the recipe details page */}
+                  <Link to={`/recipe/${recipe.id}`}>
+                    <img src={recipe.image} alt="Meal" />
+                    <p className="meal-info">{recipe.title}</p>
+                  </Link>
+                </div>
               </div>
-            </div>
-          </article>
-        ))
+            </article>
+          ))
+        ) : (
+          <p>No recipes available.</p> // Display a message when no recipes are available
+        )
       ) : (
         <Loading />
       )}
