@@ -5,8 +5,8 @@ import {Link} from "react-router-dom";
 import TopMeals from "../Component/TopMeals"
 import MealList from "../Component/MealList"
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-import RecipeList from './RecipeList';
-import RecipeDetails from './RecipeDetails'; // Create this component
+import RecipeList from '../Component/RecipeList';
+import RecipeDetails from '../Component/RecipeDetails'; // Create this component
 
 
 const HomePage = () => {
