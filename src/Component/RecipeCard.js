@@ -1,16 +1,19 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
 
 const RecipeCard = ({ title, image, id }) => {
+  const navigateToRecipeDetails = () => {
+    window.location.href = `/recipe/${id}`;
+  };
+
   return (
-    <Link to={`/recipe/${id}`} className="recipe-card-link">
-      <div className="recipe-card">
+    <div className="recipe-card" onClick={navigateToRecipeDetails}>
+      <a href={`/recipe/${id}`}>
         <img src={image} alt={title} />
-        <div className="recipe-card-body">
-          <h5 className="recipe-title">{title}</h5>
-        </div>
+      </a>
+      <div className="recipe-card-body">
+        <h5 className="recipe-title">{title}</h5>
       </div>
-    </Link>
+    </div>
   );
 };
 
