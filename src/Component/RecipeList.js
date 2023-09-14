@@ -11,7 +11,7 @@ function RecipeList() {
     const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://api.spoonacular.com/recipes/complexSearch?apiKey=YOUR_API_KEY&number=10&diet=vegan'
+          'https://api.spoonacular.com/recipes/complexSearch?apiKey=1eb2683e66424534ad3a3624227fd050&number=10&diet=vegan'
         );
         setRecipes(response.data.results);
         setIsLoading(false);
