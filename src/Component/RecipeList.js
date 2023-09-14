@@ -1,60 +1,44 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios'; // Import Axios
+import axios from 'axios';
 import RecipeCard from './RecipeCard';
-import Loading from './Loading.js';
+import Loading from './Loading';
+import { Link } from 'react-router-dom';
 
 function RecipeList() {
-  const [recipes, setRecipes] = useState({
-    arrayRecipes: [],
-    offset: 0,
-    number: 0,
-    totalResults: 0,
-    isLoading: true,
-  });
+  const [recipes, setRecipes] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    const dataFetch = async () => {
+    const fetchData = async () => {
       try {
         const response = await axios.get(
-          'https://api.spoonacular.com/recipes/complexSearch?apiKey=1eb2683e66424534ad3a3624227fd050&number=3&diet=vegan'
+          'https://api.spoonacular.com/recipes/complexSearch?apiKey=YOUR_API_KEY&number=10&diet=vegan'
         );
-
-        const { results, offset, number, totalResults } = response.data;
-
-        setRecipes({
-          arrayRecipes: results,
-          offset,
-          number,
-          totalResults,
-          isLoading: false,
-        });
+        setRecipes(response.data.results);
+        setIsLoading(false);
       } catch (error) {
         console.error('Error fetching recipes:', error);
-        setRecipes((prevRecipes) => ({
-          ...prevRecipes,
-          isLoading: false,
-        }));
+        setIsLoading(false);
       }
     };
 
-    dataFetch();
+    fetchData();
   }, []);
 
   return (
     <div className="recipe-list">
-      {recipes.isLoading ? (
-        <div>Loading...</div>
-      ) : recipes.arrayRecipes.length > 0 ? (
-        recipes.arrayRecipes.map((recipe) => (
-          <RecipeCard
-            key={recipe.id}
-            title={recipe.title}
-            image={recipe.image}
-            id={recipe.id}
-          />
-        ))
+      {isLoading ? (
+        <Loading />
       ) : (
-        <p>No recipes available.</p>
+        recipes.map((recipe) => (
+          <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
+            <RecipeCard
+              title={recipe.title}
+              image={recipe.image}
+              id={recipe.id}
+            />
+          </Link>
+        ))
       )}
     </div>
   );
