@@ -21,9 +21,6 @@ const HomePage = () => {
           </Link>
         </Banner>
       </Hero>
-      <TopMeals />
-      <MealList />
-      <h1>Recipe List</h1>
       <Routes>
         <Route exact path="/" component={RecipeList} />
         <Route path="/recipe/:id" component={RecipeDetails} />
