@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios'; // Import Axios
 import RecipeCard from './RecipeCard';
+import Loading from './Loading.js';
 
 function RecipeList() {
   const [recipes, setRecipes] = useState({
