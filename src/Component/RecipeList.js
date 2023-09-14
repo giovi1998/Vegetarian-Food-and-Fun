@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import RecipeCard from './RecipeCard';
 import Loading from './Loading';
-import { Link } from 'react-router-dom';
 
 function RecipeList() {
   const [recipes, setRecipes] = useState([]);
@@ -25,19 +24,26 @@ function RecipeList() {
     fetchData();
   }, []);
 
+  const navigateToRecipeDetails = (id) => {
+    window.location.href = `/recipe/${id}`;
+  };
+
   return (
     <div className="recipe-list">
       {isLoading ? (
         <Loading />
       ) : (
         recipes.map((recipe) => (
-          <Link key={recipe.id} to={`/recipe/${recipe.id}`}>
-            <RecipeCard
-              title={recipe.title}
-              image={recipe.image}
-              id={recipe.id}
-            />
-          </Link>
+          <div
+            key={recipe.id}
+            className="recipe-card"
+            onClick={() => navigateToRecipeDetails(recipe.id)}
+          >
+            <img src={recipe.image} alt={recipe.title} />
+            <div className="recipe-card-body">
+              <h5 className="recipe-title">{recipe.title}</h5>
+            </div>
+          </div>
         ))
       )}
     </div>
